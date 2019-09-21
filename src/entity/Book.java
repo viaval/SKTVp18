@@ -13,6 +13,7 @@ public class Book {
     private String title;
     private String author;
     private int year;
+    
      public Book() {
     }
     public Book(String title, String author, int year) {
@@ -21,7 +22,6 @@ public class Book {
         this.year = year;
     }
     public void setTitle(String title) {
-
         this.title = title;
     }
     public void setAuthor(String author) {

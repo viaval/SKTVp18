@@ -33,7 +33,9 @@ public class App {
     public void run(){
         Scanner scanner = new Scanner(System.in);
         List<Book> listBooks = new ArrayList<>();
-        List<Reader> listReader = new ArrayList<>();
+        List<Reader> listReaders = new ArrayList<>();
+        List<History> listHistories = new ArrayList<>();
+        HistoryProvider historyProvider = new HistoryProvider();
         boolean flagExit = true;
         do{
             System.out.println("Список задач:");
@@ -61,32 +63,38 @@ public class App {
                     System.out.println(b.toString()); 
                     }
                     break;
-                case "2":
-                    System.out.println("Выполняем 2 задачу");
+            case "2":
+                    System.out.println("Новый читатель.");
                     ReaderProvider readerProvider = new ReaderProvider();
                     Reader reader = readerProvider.createReader();
-                    listReader.add(reader); 
-                    listReader.forEach((r) -> {
-                    System.out.println(r.toString());
+                    listReaders.add(reader); 
+                    listReaders.stream().forEach((r) -> {
+                        System.out.println(r.toString());
             });
                 break;
-                case "3":
-                    System.out.println("Список книг библиотеки");
-                    for(Book b : listBooks) {
-                    System.out.println(b.toString());
-                        }
+            case "3":
+                    System.out.println("Список книг библиотеки:");
+                    int i = 1;
+                    for(Book b : listBooks){
+                    System.out.println(i+". "+b.toString());
+                    i++;
+                }
                 break;
-                case "4":
+            case "4":
                     System.out.println("Cписок читателей библиотеки");
                     for(int j=0;j<listReaders.size();j++){
                     System.out.println(j+1+". "+listReaders.get(j).toString());
                     }
                     break;
-                case "5":
-                    System.out.println("Выполняем 5 задачу");
+            case "5":
+                    System.out.println("Выдаем книгу читателю");
+                    
+                    History history = historyProvider.createHistory(listBooks, listReaders);
+                    listHistories.add(history);
                     break;
-                case "6":
-                    System.out.println("Выполняем 6 задачу");
+            case "6":
+                    System.out.println("Возвращение книги");
+                    historyProvider.returnBook(listHistories);
                     break;
                 default:
                     break;
