@@ -26,13 +26,17 @@ import java.util.Scanner;
  */
 
 public class App {
+    List<Book> listBooks = new ArrayList<>();
 
-    private Reader reader;
+    
     public App() {
+        
+        SaveToFile saveToFile = new SaveToFile();
+        saveToFile.loadBooksFromFile();
     }
     public void run(){
         Scanner scanner = new Scanner(System.in);
-        List<Book> listBooks = new ArrayList<>();
+        
         List<Reader> listReaders = new ArrayList<>();
         List<History> listHistories = new ArrayList<>();
         HistoryProvider historyProvider = new HistoryProvider();
@@ -59,8 +63,10 @@ public class App {
                     BookProvider bookProvider = new BookProvider();
                     Book book = bookProvider.createBook();
                     listBooks.add(book); 
+                    SaveToFile saveToFile = new SaveToFile();
+                    saveToFile.saveBooks(listBooks);
                     for(Book b : listBooks) {
-                    System.out.println(b.toString()); 
+                        System.out.println(b.toString()); 
                     }
                     break;
             case "2":
@@ -68,9 +74,9 @@ public class App {
                     ReaderProvider readerProvider = new ReaderProvider();
                     Reader reader = readerProvider.createReader();
                     listReaders.add(reader); 
-                    listReaders.stream().forEach((r) -> {
+                    for(Reader r : listReaders) {
                         System.out.println(r.toString());
-            });
+            }
                 break;
             case "3":
                     System.out.println("Список книг библиотеки:");
