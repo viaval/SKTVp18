@@ -32,7 +32,7 @@ public class App {
     public App() {
         
         SaveToFile saveToFile = new SaveToFile();
-        saveToFile.loadBooksFromFile();
+        saveToFile.loadBooks();
         saveToFile.loadReaders();
     }
     public void run(){
