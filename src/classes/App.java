@@ -27,12 +27,13 @@ import java.util.Scanner;
 
 public class App {
     List<Book> listBooks = new ArrayList<>();
-
+    List<Reader> listReaders = new ArrayList<>();
     
     public App() {
         
         SaveToFile saveToFile = new SaveToFile();
         saveToFile.loadBooksFromFile();
+        saveToFile.loadReaders();
     }
     public void run(){
         Scanner scanner = new Scanner(System.in);
@@ -40,6 +41,7 @@ public class App {
         List<Reader> listReaders = new ArrayList<>();
         List<History> listHistories = new ArrayList<>();
         HistoryProvider historyProvider = new HistoryProvider();
+        SaveToFile saveToFile = new SaveToFile();
         boolean flagExit = true;
         do{
             System.out.println("Список задач:");
@@ -63,7 +65,7 @@ public class App {
                     BookProvider bookProvider = new BookProvider();
                     Book book = bookProvider.createBook();
                     listBooks.add(book); 
-                    SaveToFile saveToFile = new SaveToFile();
+                    
                     saveToFile.saveBooks(listBooks);
                     for(Book b : listBooks) {
                         System.out.println(b.toString()); 
@@ -73,10 +75,12 @@ public class App {
                     System.out.println("Новый читатель.");
                     ReaderProvider readerProvider = new ReaderProvider();
                     Reader reader = readerProvider.createReader();
-                    listReaders.add(reader); 
+                    listReaders.add(reader);
+                    
+                    saveToFile.saveReaders(listReaders);
                     for(Reader r : listReaders) {
                         System.out.println(r.toString());
-            }
+                }
                 break;
             case "3":
                     System.out.println("Список книг библиотеки:");
