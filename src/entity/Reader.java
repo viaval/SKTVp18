@@ -9,7 +9,7 @@ package entity;
  *
  * @author User
  */
-public class Reader {
+public class Reader implemert Serializable{
     private String name;
     private String lastname;
     private String email;
@@ -36,12 +36,5 @@ public class Reader {
     @Override
     public String toString() {
         return "Reader{" + "name=" + name + ", lastname=" + lastname + ", email=" + email + '}';
-    }
-
-    public void email(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
-
-}
+    }   
+  }
