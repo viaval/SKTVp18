@@ -39,8 +39,8 @@ public class SaveToFile {
             }
         } 
    }
-
-        public void saveReaders(List<Reader>listReaders) {
+ 
+      public void saveReaders(List<Reader>listReaders) {
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
         try {
@@ -129,13 +129,5 @@ public class SaveToFile {
         }
          return listReaders;
     }
-
-    void loadBooksFromFile() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-            
+   
 }
-
- 
-
-    
